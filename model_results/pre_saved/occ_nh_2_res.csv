@@ -1,0 +1,16 @@
+"name","name_long","mean","CI_low","CI_high","Rhat","Estimate","Contact_type","var_type","var_name"
+"P[1]","Employed",0.0931463585175234,0.0916603100994359,0.0945753432556196,1.00161264283109,0.0931463585175234,"All contacts","Occupation
+status","Employed"
+"P[2]","occ_cat_student",0.211518010746437,0.206060001023,0.217153527129106,1.00058443576297,0.211518010746437,"All contacts","Occupation
+status","Student"
+"P[3]","occ_cat_other",0.264424614609251,0.260193998401938,0.268603007752501,1.00039239097609,0.264424614609251,"All contacts","Occupation
+status","Other"
+"P[1]","Employed",0.0365086074437977,0.0352074116790559,0.0378122332248123,1.00304128460501,0.0365086074437977,"Contacts occuring
+outside the home","Occupation
+status","Employed"
+"P[2]","occ_cat_student",0.158809128637793,0.149260309411557,0.168607027682424,1.00032796661488,0.158809128637793,"Contacts occuring
+outside the home","Occupation
+status","Student"
+"P[3]","occ_cat_other",0.0901271616313053,0.0858340883194701,0.0944721955784271,1.00059431526218,0.0901271616313053,"Contacts occuring
+outside the home","Occupation
+status","Other"

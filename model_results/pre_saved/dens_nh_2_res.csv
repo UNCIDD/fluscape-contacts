@@ -1,0 +1,16 @@
+"name","name_long","mean","CI_low","CI_high","Rhat","Estimate","Contact_type","var_type","var_name"
+"P[1]","Middle 50%",0.130668654077885,0.128888513386142,0.132481384896467,1.0003411080853,0.130668654077885,"All contacts","Population
+density","Middle 50%"
+"P[2]","dens_q1",0.18063971709257,0.177365343226216,0.184189597274853,1.00054113625342,0.18063971709257,"All contacts","Population
+density","1st quartile"
+"P[3]","dens_q4",0.108589518096469,0.106102279967568,0.111142399607627,0.999632469765624,0.108589518096469,"All contacts","Population
+density","4th quartile"
+"P[1]","Middle 50%",0.0516717719413885,0.0498966871378158,0.0534725169238337,1.00005486699548,0.0516717719413885,"Contacts occuring
+outside the home","Population
+density","Middle 50%"
+"P[2]","dens_q1",0.0644580856185968,0.0612556557704099,0.0677626885034653,0.999921101371557,0.0644580856185968,"Contacts occuring
+outside the home","Population
+density","1st quartile"
+"P[3]","dens_q4",0.045737982832823,0.0432687437130166,0.0482639357990975,1.00059009183599,0.045737982832823,"Contacts occuring
+outside the home","Population
+density","4th quartile"
