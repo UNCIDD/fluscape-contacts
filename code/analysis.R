@@ -36,8 +36,10 @@ if(run_models) {
   
   # Load second-order contact regression model results
   # From hierarchical logistic regression models
-  all_2_res <- read.csv("model_results/pre_saved/all_grpind_soc_2_res.csv")
-  ce_2_res <- read.csv("model_results/pre_saved/ce_grpind_soc_2_res.csv")
+  # all_2_res <- read.csv("model_results/pre_saved/all_grpind_soc_2_res.csv")
+  all_2_res <- read.csv("model_results/pre_saved/all_grpind_soc_2_res_update.csv") # UPDATE
+  # ce_2_res <- read.csv("model_results/pre_saved/ce_grpind_soc_2_res.csv")
+  ce_2_res <- read.csv("model_results/pre_saved/ce_grpind_soc_2_res_update.csv") # UPDATE
   part_2_res <- read.csv("model_results/pre_saved/part_2_res.csv")
   age_2_res <- read.csv("model_results/pre_saved/age_2_res.csv") 
   occ_2_res <- read.csv("model_results/pre_saved/occ_2_res.csv") 
@@ -51,7 +53,8 @@ if(run_models) {
   sh_loc_2_res <- read.csv("model_results/pre_saved/sh_loc_2_res.csv")
   sh_dur_2_res <- read.csv("model_results/pre_saved/sh_dur_2_res.csv")
   sh_freq_2_res <- read.csv("model_results/pre_saved/sh_freq_2_res.csv")
-  sh_touch_2_res <- read.csv("model_results/pre_saved/both_touch_2_res.csv")
+  # sh_touch_2_res <- read.csv("model_results/pre_saved/both_touch_2_res.csv")
+  sh_touch_2_res <- read.csv("model_results/pre_saved/both_touch_2_res_update.csv") # UPDATE
 }
 
 
@@ -166,7 +169,8 @@ models_2 %>%
                              "freq_cat_1", "freq_cat_1_3",
                              "dur_cat_10", "dur_cat_10_59",
                              "CONTACT_Touch",
-                             "shared_location", "shared_dur", "shared_freq", "both_touch")) %>%
+                             "shared_location", "shared_dur", "shared_freq", "both_touch",
+                             "group_ind", "group_int")) %>%
   dplyr::select(var_type, var_name, Estimate, CI_low, CI_high, Contact_type, Adj) %>%
   mutate(Adj = factor(Adj, levels = c("Unadjusted", "Participant-only model", "Individual contact model", "Shared contact model"))) %>%
   arrange(Contact_type, Adj)
