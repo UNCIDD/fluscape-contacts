@@ -19,12 +19,18 @@ if(run_models) {
 } else {
   # Load first-order contact regression model results
   # From hierarchical quasi-poisson regression models
-  full_1_res <- read.csv("model_results/pre_saved/full_1_res.csv")
-  age_1_res <- read.csv("model_results/pre_saved/age_1_res.csv") 
-  occ_1_res <- read.csv("model_results/pre_saved/occ_1_res.csv") 
-  HH_num_1_res <- read.csv("model_results/pre_saved/HH_num_1_res.csv") 
-  gender_1_res <- read.csv("model_results/pre_saved/gender_1_res.csv") 
-  density_1_res <- read.csv("model_results/pre_saved/density_1_res.csv") 
+  # full_1_res <- read.csv("model_results/pre_saved/full_1_res.csv")
+  full_1_res <- read.csv("model_results/pre_saved/full_1_res_update.csv") # UPDATE
+  # age_1_res <- read.csv("model_results/pre_saved/age_1_res.csv")
+  age_1_res <- read.csv("model_results/pre_saved/age_1_res_update.csv") # UPDATE
+  # occ_1_res <- read.csv("model_results/pre_saved/occ_1_res.csv") 
+  occ_1_res <- read.csv("model_results/pre_saved/occ_1_res_update.csv") # UPDATE 
+  # HH_num_1_res <- read.csv("model_results/pre_saved/HH_num_1_res.csv")
+  HH_num_1_res <- read.csv("model_results/pre_saved/HH_num_1_res_update.csv") # UPDATE
+  # gender_1_res <- read.csv("model_results/pre_saved/gender_1_res.csv") 
+  gender_1_res <- read.csv("model_results/pre_saved/gender_1_res_update.csv") # UPDATE
+  # density_1_res <- read.csv("model_results/pre_saved/density_1_res.csv")
+  density_1_res <- read.csv("model_results/pre_saved/density_1_res_update.csv") # UPDATE
   
   # Second-order descriptive results for probability of triangle connection
   # From un-adjusted, non-hierarchical logistic regression models

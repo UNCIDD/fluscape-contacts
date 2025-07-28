@@ -241,10 +241,94 @@ density_2_res <- run_stan_model(stan_file = "code/stan_models/second_order_hier_
                                group_ind = FALSE, group_int = FALSE,
                                chains = 4, iter = 2000, cores = n_cores)
 
-# Unadjusted - population density
+# Unadjusted - contact setting
+vars <- c("loc_cat_school", "loc_cat_work", "loc_cat_other", "loc_cat_home")
+loc_2_res <- run_stan_model(stan_file = "code/stan_models/second_order_hier_unadj_group.stan",
+                            save_name = "model_results/new_runs/loc_2",
+                            run_type = "both",
+                            data = contact_tri,
+                            var = vars, var_level = "tri",
+                            analysis_type = "second_order",
+                            full = FALSE, grp_lik = TRUE, hier = TRUE,
+                            group_ind = FALSE, group_int = FALSE,
+                            chains = 4, iter = 2000, cores = n_cores)
+
+# Unadjusted - contact duration
+vars <- c("dur_cat_10", "dur_cat_10_59")
+dur_2_res <- run_stan_model(stan_file = "code/stan_models/second_order_hier_unadj_group.stan",
+                            save_name = "model_results/new_runs/dur_2",
+                            run_type = "both",
+                            data = contact_tri,
+                            var = vars, var_level = "tri",
+                            analysis_type = "second_order",
+                            full = FALSE, grp_lik = TRUE, hier = TRUE,
+                            group_ind = FALSE, group_int = FALSE,
+                            chains = 4, iter = 2000, cores = n_cores)
+
+# Unadjusted - contact frequency
+vars <- c("freq_cat_1", "freq_cat_1_3")
+freq_2_res <- run_stan_model(stan_file = "code/stan_models/second_order_hier_unadj_group.stan",
+                            save_name = "model_results/new_runs/freq_2",
+                            run_type = "both",
+                            data = contact_tri,
+                            var = vars, var_level = "tri",
+                            analysis_type = "second_order",
+                            full = FALSE, grp_lik = TRUE, hier = TRUE,
+                            group_ind = FALSE, group_int = FALSE,
+                            chains = 4, iter = 2000, cores = n_cores)
+
+# Unadjusted - whether contact involved touch
+vars <- c("CONTACT_Touch")
+touch_2_res <- run_stan_model(stan_file = "code/stan_models/second_order_hier_unadj_group.stan",
+                             save_name = "model_results/new_runs/touch_2",
+                             run_type = "both",
+                             data = contact_tri,
+                             var = vars, var_level = "tri",
+                             analysis_type = "second_order",
+                             full = FALSE, grp_lik = TRUE, hier = TRUE,
+                             group_ind = FALSE, group_int = FALSE,
+                             chains = 4, iter = 2000, cores = n_cores)
+
+# Unadjusted - both touch
 vars <- c("both_touch")
 both_touch_2_res <- run_stan_model(stan_file = "code/stan_models/second_order_hier_unadj_group.stan",
-                                save_name = "model_results/new_runs/both_touch_2",
+                                   save_name = "model_results/new_runs/both_touch_2",
+                                   run_type = "both",
+                                   data = contact_tri,
+                                   var = vars, var_level = "tri",
+                                   analysis_type = "second_order",
+                                   full = FALSE, grp_lik = TRUE, hier = TRUE,
+                                   group_ind = FALSE, group_int = FALSE,
+                                   chains = 4, iter = 2000, cores = n_cores)
+
+# Unadjusted - shared contact setting
+vars <- c("shared_location")
+sh_loc_2_res <- run_stan_model(stan_file = "code/stan_models/second_order_hier_unadj_group.stan",
+                                   save_name = "model_results/new_runs/sh_loc_2",
+                                   run_type = "both",
+                                   data = contact_tri,
+                                   var = vars, var_level = "tri",
+                                   analysis_type = "second_order",
+                                   full = FALSE, grp_lik = TRUE, hier = TRUE,
+                                   group_ind = FALSE, group_int = FALSE,
+                                   chains = 4, iter = 2000, cores = n_cores)
+
+# Unadjusted - shared contact frequency
+vars <- c("shared_freq")
+sh_freq_2_res <- run_stan_model(stan_file = "code/stan_models/second_order_hier_unadj_group.stan",
+                               save_name = "model_results/new_runs/sh_freq_2",
+                               run_type = "both",
+                               data = contact_tri,
+                               var = vars, var_level = "tri",
+                               analysis_type = "second_order",
+                               full = FALSE, grp_lik = TRUE, hier = TRUE,
+                               group_ind = FALSE, group_int = FALSE,
+                               chains = 4, iter = 2000, cores = n_cores)
+
+# Unadjusted - shared contact duration
+vars <- c("shared_dur")
+sh_dur_2_res <- run_stan_model(stan_file = "code/stan_models/second_order_hier_unadj_group.stan",
+                                save_name = "model_results/new_runs/sh_dur_2",
                                 run_type = "both",
                                 data = contact_tri,
                                 var = vars, var_level = "tri",
@@ -252,7 +336,4 @@ both_touch_2_res <- run_stan_model(stan_file = "code/stan_models/second_order_hi
                                 full = FALSE, grp_lik = TRUE, hier = TRUE,
                                 group_ind = FALSE, group_int = FALSE,
                                 chains = 4, iter = 2000, cores = n_cores)
-
-
-
 
