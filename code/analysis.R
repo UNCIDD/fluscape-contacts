@@ -40,7 +40,8 @@ if(run_models) {
   all_2_res <- read.csv("model_results/pre_saved/all_grpind_soc_2_res_update.csv") # UPDATE
   # ce_2_res <- read.csv("model_results/pre_saved/ce_grpind_soc_2_res.csv")
   ce_2_res <- read.csv("model_results/pre_saved/ce_grpind_soc_2_res_update.csv") # UPDATE
-  part_2_res <- read.csv("model_results/pre_saved/part_2_res.csv")
+  # part_2_res <- read.csv("model_results/pre_saved/part_2_res.csv")
+  part_2_res <- read.csv("model_results/pre_saved/part_2_res.csv") # UPDATE
   age_2_res <- read.csv("model_results/pre_saved/age_2_res.csv") 
   occ_2_res <- read.csv("model_results/pre_saved/occ_2_res.csv") 
   HH_num_2_res <- read.csv("model_results/pre_saved/HH_num_2_res.csv") 
@@ -221,6 +222,7 @@ bind_rows(myfiles) %>%
                              "freq_cat_1", "freq_cat_1_3",
                              "dur_cat_10", "dur_cat_10_59",
                              "CONTACT_Touch",
-                             "shared_location", "shared_dur", "shared_freq", "both_touch")) %>%
+                             "shared_location", "shared_dur", "shared_freq", "both_touch",
+                             "group_ind", "group_int")) %>%
   dplyr::select(var_type, var_name, Estimate, CI_low, CI_high, Contact_type, Adj, affirmative_response) %>%
   arrange(Contact_type, affirmative_response, Adj)
