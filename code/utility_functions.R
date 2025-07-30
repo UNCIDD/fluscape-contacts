@@ -87,7 +87,7 @@ process_model_dat <- function(models,
                              "shared_dur" = "Shared duration",
                              "shared_freq" = "Shared frequency",
                              "both_touch" = "Both contacts\ninvolve touch")) %>%
-    dplyr::select(-X, -name, -name_long, -mean, -se_mean, -sd, -Rhat)
+    dplyr::select(-name, -name_long, -mean, -se_mean, -sd, -Rhat)
   
   return(out)
   

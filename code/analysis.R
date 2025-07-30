@@ -41,21 +41,34 @@ if(run_models) {
   # ce_2_res <- read.csv("model_results/pre_saved/ce_grpind_soc_2_res.csv")
   ce_2_res <- read.csv("model_results/pre_saved/ce_grpind_soc_2_res_update.csv") # UPDATE
   # part_2_res <- read.csv("model_results/pre_saved/part_2_res.csv")
-  part_2_res <- read.csv("model_results/pre_saved/part_2_res.csv") # UPDATE
-  age_2_res <- read.csv("model_results/pre_saved/age_2_res.csv") 
-  occ_2_res <- read.csv("model_results/pre_saved/occ_2_res.csv") 
-  HH_num_2_res <- read.csv("model_results/pre_saved/HH_num_2_res.csv") 
-  gender_2_res <- read.csv("model_results/pre_saved/gender_2_res.csv") 
-  density_2_res <- read.csv("model_results/pre_saved/density_2_res.csv")
-  dur_2_res <- read.csv("model_results/pre_saved/dur_2_res.csv")
-  freq_2_res <- read.csv("model_results/pre_saved/freq_2_res.csv")
-  loc_2_res <- read.csv("model_results/pre_saved/loc_cat_soc_2_res.csv")
-  touch_2_res <- read.csv("model_results/pre_saved/touch_2_res.csv")
-  sh_loc_2_res <- read.csv("model_results/pre_saved/sh_loc_2_res.csv")
-  sh_dur_2_res <- read.csv("model_results/pre_saved/sh_dur_2_res.csv")
-  sh_freq_2_res <- read.csv("model_results/pre_saved/sh_freq_2_res.csv")
+  part_2_res <- read.csv("model_results/pre_saved/part_2_res_update.csv") # UPDATE
+  # age_2_res <- read.csv("model_results/pre_saved/age_2_res.csv")
+  age_2_res <- read.csv("model_results/pre_saved/age_2_res_update.csv") # UPDATE
+  # occ_2_res <- read.csv("model_results/pre_saved/occ_2_res.csv")
+  occ_2_res <- read.csv("model_results/pre_saved/occ_2_res_update.csv") # UPDATE
+  # HH_num_2_res <- read.csv("model_results/pre_saved/HH_num_2_res.csv")
+  HH_num_2_res <- read.csv("model_results/pre_saved/HH_num_2_res_update.csv") # UPDATE
+  # gender_2_res <- read.csv("model_results/pre_saved/gender_2_res.csv")
+  gender_2_res <- read.csv("model_results/pre_saved/gender_2_res_update.csv") # UPDATE
+  # density_2_res <- read.csv("model_results/pre_saved/density_2_res.csv")
+  density_2_res <- read.csv("model_results/pre_saved/density_2_res_update.csv") # UPDATE
+  # dur_2_res <- read.csv("model_results/pre_saved/dur_2_res.csv")
+  dur_2_res <- read.csv("model_results/pre_saved/dur_2_res_update.csv") # UPDATE
+  # freq_2_res <- read.csv("model_results/pre_saved/freq_2_res.csv")
+  freq_2_res <- read.csv("model_results/pre_saved/freq_2_res_update.csv") # UPDATE
+  # loc_2_res <- read.csv("model_results/pre_saved/loc_cat_soc_2_res.csv")
+  loc_2_res <- read.csv("model_results/pre_saved/loc_cat_soc_2_res_update.csv") # UPDATE
+  # touch_2_res <- read.csv("model_results/pre_saved/touch_2_res.csv")
+  touch_2_res <- read.csv("model_results/pre_saved/touch_2_res_update.csv") # UPDATE
+  # sh_loc_2_res <- read.csv("model_results/pre_saved/sh_loc_2_res.csv")
+  sh_loc_2_res <- read.csv("model_results/pre_saved/sh_loc_2_res_update.csv") # UPDATE
+  # sh_dur_2_res <- read.csv("model_results/pre_saved/sh_dur_2_res.csv")
+  sh_dur_2_res <- read.csv("model_results/pre_saved/sh_dur_2_res_update.csv") # UPDATE
+  # sh_freq_2_res <- read.csv("model_results/pre_saved/sh_freq_2_res.csv")
+  sh_freq_2_res <- read.csv("model_results/pre_saved/sh_freq_2_res_update.csv") # UPDATE
   # sh_touch_2_res <- read.csv("model_results/pre_saved/both_touch_2_res.csv")
   sh_touch_2_res <- read.csv("model_results/pre_saved/both_touch_2_res_update.csv") # UPDATE
+  grp_2_res <- read.csv("model_results/pre_saved/grp_2_res.csv")
 }
 
 
@@ -87,7 +100,8 @@ models_2 <- bind_rows(all_2_res %>% mutate(Adj = "Shared contact model"),
                       sh_loc_2_res %>% mutate(Adj = "Unadjusted"),
                       sh_dur_2_res %>% mutate(Adj = "Unadjusted"),
                       sh_freq_2_res %>% mutate(Adj = "Unadjusted"),
-                      sh_touch_2_res %>% mutate(Adj = "Unadjusted")) %>%
+                      sh_touch_2_res %>% mutate(Adj = "Unadjusted"),
+                      grp_2_res %>% mutate(Adj = "Unadjusted")) %>%
   mutate(Adj = factor(Adj, levels = c("Unadjusted", "Participant-only model", "Individual contact model", "Shared contact model")))
 
 ############ Main text figures ############

@@ -337,3 +337,15 @@ sh_dur_2_res <- run_stan_model(stan_file = "code/stan_models/second_order_hier_u
                                 group_ind = FALSE, group_int = FALSE,
                                 chains = 4, iter = 2000, cores = n_cores)
 
+# Unadjusted - group indicator and interaction
+vars <- c()
+grp_2_res <- run_stan_model(stan_file = "code/stan_models/second_order_hier_unadj_group.stan",
+                            save_name = "model_results/new_runs/grp_2",
+                            run_type = "both",
+                            data = contact_tri,
+                            var = vars, var_level = "tri",
+                            analysis_type = "second_order",
+                            full = FALSE, grp_lik = TRUE, hier = TRUE,
+                            group_ind = TRUE, group_int = TRUE,
+                            chains = 4, iter = 2000, cores = n_cores)
+
