@@ -514,43 +514,77 @@ make_table1  <- function(data) {
   
 }
 
-contact_sums <- function(x) {
-  out <- bind_rows(x %>% group_by(group_size_cat) %>%
-                     summarize(sum = sum(CONTACT_Num, na.rm = T)) %>%
-                     rename(var_level = group_size_cat) %>%
-                     mutate(var_type = "Group size"),
-                   x %>% group_by(contact_age_cat) %>%
-                     summarize(sum = sum(CONTACT_Num, na.rm = T)) %>%
-                     rename(var_level = contact_age_cat) %>%
-                     mutate(var_level = str_replace(var_level, "_", "-"),
-                            var_type = "Contact age"),
-                   x %>% group_by(loc_cat) %>%
-                     summarize(sum = sum(CONTACT_Num, na.rm = T)) %>%
-                     rename(var_level = loc_cat) %>%
-                     mutate(var_type = "Contact setting"),
-                   x %>% group_by(CONTACT_Touch) %>%
-                     summarize(sum = sum(CONTACT_Num, na.rm = T)) %>%
-                     rename(var_level = CONTACT_Touch) %>%
-                     mutate(var_type = "Contact involved touch?"),
-                   x %>% group_by(freq_cat) %>%
-                     summarize(sum = sum(CONTACT_Num, na.rm = T)) %>%
-                     rename(var_level = freq_cat) %>%
-                     mutate(var_level = dplyr::recode(var_level,
-                                                      `<1/wk` = "<1 time per week",
-                                                      `1-3/wk` = "1-3 times per week",
-                                                      `4+/wk` = "4+ times per week"),
-                            var_type = "Contact frequency"),
-                   x %>% group_by(dur_cat) %>%
-                     summarize(sum = sum(CONTACT_Num, na.rm = T)) %>%
-                     rename(var_level = dur_cat) %>%
-                     mutate(var_level = str_replace(var_level, "min", "minutes"),
-                            var_type = "Contact duration")) %>%
-    replace_na(list(var_level = "Unknown"))
+contact_sums <- function(x, event) {
+  if(event) {
+    out <- bind_rows(x %>% group_by(group_size_cat) %>%
+                       summarize(sum = n()) %>%
+                       rename(var_level = group_size_cat) %>%
+                       mutate(var_type = "Group size"),
+                     x %>% group_by(contact_age_cat) %>%
+                       summarize(sum = n()) %>%
+                       rename(var_level = contact_age_cat) %>%
+                       mutate(var_level = str_replace(var_level, "_", "-"),
+                              var_type = "Contact age"),
+                     x %>% group_by(loc_cat) %>%
+                       summarize(sum = n()) %>%
+                       rename(var_level = loc_cat) %>%
+                       mutate(var_type = "Contact setting"),
+                     x %>% group_by(CONTACT_Touch) %>%
+                       summarize(sum = n()) %>%
+                       rename(var_level = CONTACT_Touch) %>%
+                       mutate(var_type = "Contact involved touch?"),
+                     x %>% group_by(freq_cat) %>%
+                       summarize(sum = n()) %>%
+                       rename(var_level = freq_cat) %>%
+                       mutate(var_level = dplyr::recode(var_level,
+                                                        `<1/wk` = "<1 time per week",
+                                                        `1-3/wk` = "1-3 times per week",
+                                                        `4+/wk` = "4+ times per week"),
+                              var_type = "Contact frequency"),
+                     x %>% group_by(dur_cat) %>%
+                       summarize(sum = n()) %>%
+                       rename(var_level = dur_cat) %>%
+                       mutate(var_level = str_replace(var_level, "min", "minutes"),
+                              var_type = "Contact duration")) %>%
+      replace_na(list(var_level = "Unknown"))
+  } else {
+    out <- bind_rows(x %>% group_by(group_size_cat) %>%
+                       summarize(sum = sum(CONTACT_Num, na.rm = T)) %>%
+                       rename(var_level = group_size_cat) %>%
+                       mutate(var_type = "Group size"),
+                     x %>% group_by(contact_age_cat) %>%
+                       summarize(sum = sum(CONTACT_Num, na.rm = T)) %>%
+                       rename(var_level = contact_age_cat) %>%
+                       mutate(var_level = str_replace(var_level, "_", "-"),
+                              var_type = "Contact age"),
+                     x %>% group_by(loc_cat) %>%
+                       summarize(sum = sum(CONTACT_Num, na.rm = T)) %>%
+                       rename(var_level = loc_cat) %>%
+                       mutate(var_type = "Contact setting"),
+                     x %>% group_by(CONTACT_Touch) %>%
+                       summarize(sum = sum(CONTACT_Num, na.rm = T)) %>%
+                       rename(var_level = CONTACT_Touch) %>%
+                       mutate(var_type = "Contact involved touch?"),
+                     x %>% group_by(freq_cat) %>%
+                       summarize(sum = sum(CONTACT_Num, na.rm = T)) %>%
+                       rename(var_level = freq_cat) %>%
+                       mutate(var_level = dplyr::recode(var_level,
+                                                        `<1/wk` = "<1 time per week",
+                                                        `1-3/wk` = "1-3 times per week",
+                                                        `4+/wk` = "4+ times per week"),
+                              var_type = "Contact frequency"),
+                     x %>% group_by(dur_cat) %>%
+                       summarize(sum = sum(CONTACT_Num, na.rm = T)) %>%
+                       rename(var_level = dur_cat) %>%
+                       mutate(var_level = str_replace(var_level, "min", "minutes"),
+                              var_type = "Contact duration")) %>%
+      replace_na(list(var_level = "Unknown"))  
+  }
   
   return(out)
 }
 
-make_table2 <- function(data) {
+make_table2 <- function(data, event = FALSE) {
   
   out <- data.frame(var_type = c(rep("Group size", 5),
                                  rep("Contact age", 7),
@@ -566,19 +600,19 @@ make_table2 <- function(data) {
                                   "<10 minutes", "10-59 minutes", "60+ minutes", "Unknown"))
   
   out <- out %>%
-    left_join(contact_sums(data) %>%
+    left_join(contact_sums(data, event) %>%
                 rename(Total = sum)) %>%
-    left_join(contact_sums(data %>% filter(age_cat_2 == "0_4")) %>%
+    left_join(contact_sums(data %>% filter(age_cat_2 == "0_4"), event) %>%
                 rename(age_0_4 = sum)) %>%
-    left_join(contact_sums(data %>% filter(age_cat_2 == "5_19")) %>%
+    left_join(contact_sums(data %>% filter(age_cat_2 == "5_19"), event) %>%
                 rename(age_5_19 = sum)) %>%
-    left_join(contact_sums(data %>% filter(age_cat_2 == "20_39")) %>%
+    left_join(contact_sums(data %>% filter(age_cat_2 == "20_39"), event) %>%
                 rename(age_20_39 = sum)) %>%
-    left_join(contact_sums(data %>% filter(age_cat_2 == "40_64")) %>%
+    left_join(contact_sums(data %>% filter(age_cat_2 == "40_64"), event) %>%
                 rename(age_40_64 = sum)) %>%
-    left_join(contact_sums(data %>% filter(age_cat_2 == "65+")) %>%
+    left_join(contact_sums(data %>% filter(age_cat_2 == "65+"), event) %>%
                 rename(age_65plus = sum)) %>%
-    left_join(contact_sums(data %>% filter(is.na(age_cat_2))) %>%
+    left_join(contact_sums(data %>% filter(is.na(age_cat_2)), event) %>%
                 rename(age_unknown = sum)) %>%
     replace(is.na(.), 0)
   
