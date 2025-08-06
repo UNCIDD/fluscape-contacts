@@ -1350,3 +1350,61 @@ get_waic_table <- function(models, model_dat) {
   
 }
 
+get_stanfits <- function() {
+  stan_fits <- list()
+  model_info <- data.frame(Analysis = rep(c(rep("Relative number of contacts", 6),
+                                            rep("relative odds of triangle connectedness", 17)), 2),
+                           Adjustment = c(),
+                           Contact_type = c(rep("All contacts", 23),
+                                            rep("Extra-household contacts", 23)),
+                           Model = c())
+  
+  stan_fits[[1]] <- readRDS("model_results/new_runs/full_1.rds")
+  stan_fits[[2]] <- readRDS("model_results/new_runs/age_1.rds")
+  stan_fits[[3]] <- readRDS("model_results/new_runs/occ_1.rds") 
+  stan_fits[[4]] <- readRDS("model_results/new_runs/HH_num_1.rds")
+  stan_fits[[5]] <- readRDS("model_results/new_runs/gender_1.rds")
+  stan_fits[[6]] <- readRDS("model_results/new_runs/density_1.rds")
+  stan_fits[[7]] <- readRDS("model_results/new_runs/all_grpind_soc_2.rds")
+  stan_fits[[8]] <- readRDS("model_results/new_runs/ce_grpind_soc_2.rds") 
+  stan_fits[[9]] <- readRDS("model_results/new_runs/part_2.rds")
+  stan_fits[[10]] <- readRDS("model_results/new_runs/age_2.rds")
+  stan_fits[[11]] <- readRDS("model_results/new_runs/occ_2.rds")
+  stan_fits[[12]] <- readRDS("model_results/new_runs/HH_num_2.rds")
+  stan_fits[[13]] <- readRDS("model_results/new_runs/gender_2.rds")
+  stan_fits[[14]] <- readRDS("model_results/new_runs/density_2.rds")
+  stan_fits[[15]] <- readRDS("model_results/new_runs/dur_2.rds")
+  stan_fits[[16]] <- readRDS("model_results/new_runs/freq_2.rds")
+  stan_fits[[17]] <- readRDS("model_results/new_runs/loc_cat_soc_2.rds")
+  stan_fits[[18]] <- readRDS("model_results/new_runs/touch_2.rds")
+  stan_fits[[19]] <- readRDS("model_results/new_runs/sh_loc_2.rds")
+  stan_fits[[20]] <- readRDS("model_results/new_runs/sh_dur_2.rds")
+  stan_fits[[21]] <- readRDS("model_results/new_runs/sh_freq_2.rds")
+  stan_fits[[22]] <- readRDS("model_results/new_runs/both_touch_2.rds")
+  stan_fits[[23]] <- readRDS("model_results/new_runs/grp_2.rds")
+  
+  stan_fits[[24]] <- readRDS("model_results/new_runs/full_1_ex.rds")
+  stan_fits[[25]] <- readRDS("model_results/new_runs/age_1_ex.rds")
+  stan_fits[[26]] <- readRDS("model_results/new_runs/occ_1_ex.rds") 
+  stan_fits[[27]] <- readRDS("model_results/new_runs/HH_num_1_ex.rds")
+  stan_fits[[28]] <- readRDS("model_results/new_runs/gender_1_ex.rds")
+  stan_fits[[29]] <- readRDS("model_results/new_runs/density_1_ex.rds")
+  stan_fits[[30]] <- readRDS("model_results/new_runs/all_grpind_soc_2_ex.rds")
+  stan_fits[[31]] <- readRDS("model_results/new_runs/ce_grpind_soc_2_ex.rds") 
+  stan_fits[[32]] <- readRDS("model_results/new_runs/part_2_ex.rds")
+  stan_fits[[33]] <- readRDS("model_results/new_runs/age_2_ex.rds")
+  stan_fits[[34]] <- readRDS("model_results/new_runs/occ_2_ex.rds")
+  stan_fits[[35]] <- readRDS("model_results/new_runs/HH_num_2_ex.rds")
+  stan_fits[[36]] <- readRDS("model_results/new_runs/gender_2_ex.rds")
+  stan_fits[[37]] <- readRDS("model_results/new_runs/density_2_ex.rds")
+  stan_fits[[38]] <- readRDS("model_results/new_runs/dur_2_ex.rds")
+  stan_fits[[39]] <- readRDS("model_results/new_runs/freq_2_ex.rds")
+  stan_fits[[40]] <- readRDS("model_results/new_runs/loc_cat_soc_2_ex.rds")
+  stan_fits[[41]] <- readRDS("model_results/new_runs/touch_2_ex.rds")
+  stan_fits[[42]] <- readRDS("model_results/new_runs/sh_loc_2_ex.rds")
+  stan_fits[[43]] <- readRDS("model_results/new_runs/sh_dur_2_ex.rds")
+  stan_fits[[44]] <- readRDS("model_results/new_runs/sh_freq_2_ex.rds")
+  stan_fits[[45]] <- readRDS("model_results/new_runs/both_touch_2_ex.rds")
+  stan_fits[[46]] <- readRDS("model_results/new_runs/grp_2_ex.rds")
+  
+}
