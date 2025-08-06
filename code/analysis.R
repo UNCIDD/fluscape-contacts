@@ -178,7 +178,8 @@ models_2 %>%
   arrange(Contact_type, Adj)
 
 # Table S5
-# Note, this will only run if run_models = TRUE as it requires having all the chains
+# Note, this will only run if run_models = TRUE or you have previously run with rnu_models = TRUE
+# as it requires having all the chains
 models <- list(readRDS("model_results/new_runs/part_2.rds"),
                readRDS("model_results/new_runs/ce_grpind_2.rds"),
                readRDS("model_results/new_runs/all_grpind_2.rds"),
@@ -227,3 +228,11 @@ bind_rows(myfiles) %>%
                              "group_ind", "group_int")) %>%
   dplyr::select(var_type, var_name, Estimate, CI_low, CI_high, Contact_type, Adj, affirmative_response) %>%
   arrange(Contact_type, affirmative_response, Adj)
+
+# Table SX
+# ESS
+# Note, this will only run if run_models = TRUE or you have previously run with rnu_models = TRUE
+# as it requires having all the chains
+
+
+
